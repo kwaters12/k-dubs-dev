@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import Greeting from './components/Greeting.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <Greeting />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/">Profile</RouterLink>
+        <RouterLink to="/experience">Experience</RouterLink>
+        <RouterLink to="/projects">Projects</RouterLink>
+        <RouterLink to="/blog">Blog</RouterLink>
       </nav>
     </div>
   </header>
@@ -21,7 +21,13 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
+template {
+  display: flex;
+  flex-direction: row;
+}
 header {
+  position: sticky;
+  top: 0;
   line-height: 1.5;
   max-height: 100vh;
 }
