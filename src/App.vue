@@ -29,23 +29,38 @@ function scrollToExperience(experience: Experience) {
 function scrollNow() {
   const currentScrollPos = window.scrollY
   const homeTop = homeRef?.value?.offsetTop || 0
+  const experienceTop = experienceRef?.value?.offsetTop || 0
   const projectsTop = projectsRef?.value?.offsetTop || 0
   const blogTop = blogRef?.value?.offsetTop || 0
 
-  if (currentScrollPos <= homeTop) {
-    currentScreen.value = Screens.Home
-  } else if (currentScrollPos >= homeTop && currentScrollPos < projectsTop) {
-    currentScreen.value = Screens.Experience
-  } else if (currentScrollPos >= projectsTop && currentScrollPos < blogTop) {
-    currentScreen.value = Screens.Projects
-  } else {
+  if (currentScrollPos >= blogTop - 5) {
     currentScreen.value = Screens.Blog
+  } else if (currentScrollPos >= projectsTop - 5) {
+    currentScreen.value = Screens.Projects
+  } else if (currentScrollPos >= experienceTop - 5) {
+    currentScreen.value = Screens.Experience
+  } else {
+    currentScreen.value = Screens.Home
   }
+
+  // if (currentScrollPos < experienceTop) {
+  //   currentScreen.value = Screens.Home
+  // } else if (currentScrollPos >= experienceTop && currentScrollPos <= projectsTop) {
+  //   currentScreen.value = Screens.Experience
+  // } else if (currentScrollPos >= projectsTop && currentScrollPos <= blogTop) {
+  //   currentScreen.value = Screens.Projects
+  // } else {
+  //   currentScreen.value = Screens.Blog
+  // }
 }
 function handleScroll() {
   let doScoll: any
 
   window.onscroll = () => {
+    clearTimeout(doScoll)
+    doScoll = setTimeout(scrollNow, 100) // firing less scroll events
+  }
+  window.onresize = () => {
     clearTimeout(doScoll)
     doScoll = setTimeout(scrollNow, 100) // firing less scroll events
   }
@@ -98,6 +113,7 @@ handleScroll()
     <section ref="blogRef">
       <BlogView />
     </section>
+    <div class="divider"></div>
     <section ref="footerRef">
       <footer>
         <p>
@@ -136,10 +152,10 @@ nav a.router-link-exact-active {
 }
 
 nav a {
+  font-size: 1em;
   cursor: pointer;
   display: inline-block;
   padding: 0 1rem 3px 1rem;
-  border-left: 1px solid var(--color-border);
   &.active {
     color: var(--color-text);
     text-decoration: underline;

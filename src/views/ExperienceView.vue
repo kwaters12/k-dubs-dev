@@ -128,7 +128,6 @@ function clickHandler(link: string) {
       margin-right: 1rem;
       margin-top: 0.5rem;
       background-color: #123942;
-      /* color: #1fff94; */
       border-radius: 15px;
       font-weight: 500;
       font-size: 12px;
