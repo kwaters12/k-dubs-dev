@@ -121,9 +121,10 @@ function clickHandler(link: string) {
     list-style-type: none;
     padding: 0;
     li {
-      display: inline;
-      padding: 5px 1rem 8px 1rem;
+      display: inline-block;
+      padding: 5px 1rem;
       margin-right: 1rem;
+      margin-top: 0.5rem;
       background-color: #1fff94;
       color: var(--color-background);
       border-radius: 15px;
