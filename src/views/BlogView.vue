@@ -9,7 +9,9 @@ const components = computed(() => {
 </script>
 
 <template>
-  <component v-for="component in components" :is="component" />
+  <main>
+    <component v-for="component in components" :is="component" />
+  </main>
 </template>
 
 <style>

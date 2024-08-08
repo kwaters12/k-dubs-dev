@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import { defineEmits } from 'vue'
+import { Experience } from './ExperienceView.vue'
+const emit = defineEmits(['scrollToExperience'])
 </script>
 
 <template>
@@ -9,9 +11,20 @@ import TheWelcome from '../components/TheWelcome.vue'
         Ever since the days of Windows 3.1 and DOS, I have been obsessed for how computers work. As
         a kid, software and games seemed almost magic to me. Since then I’ve been working to
         demystify. Starting my career in game development, I’ve been peeling back the onion of
-        software development since, having worked at a car dealership website maker, YouTube creator
-        network platform, marketing agency, legalized marijuana startup, medical software provider,
-        and most recently on direct-to-consumer sales software.
+        software development since, having worked at a
+        <a @click="$emit('scrollToExperience', Experience.Convertus)">
+          car dealership website maker</a
+        >,
+        <a @click="$emit('scrollToExperience', Experience.BroadbandTV)"
+          >YouTube creator network platform</a
+        >, <a @click="$emit('scrollToExperience', Experience.StoryDriven)">marketing agency</a>,
+        <a @click="$emit('scrollToExperience', Experience.Xeraflop)">legalized marijuana startup</a
+        >,
+        <a @click="$emit('scrollToExperience', Experience.iClinic)">medical software provider</a>,
+        and most recently on
+        <a @click="$emit('scrollToExperience', Experience.Penny)"
+          >direct-to-consumer sales software</a
+        >.
       </p>
       <p>
         I've been lucky to have done a ton of different things at this point in my career, and I am
@@ -29,5 +42,19 @@ import TheWelcome from '../components/TheWelcome.vue'
 <style>
 p {
   margin-bottom: 1.5rem;
+  font-weight: lighter;
+}
+li {
+  font-weight: lighter;
+}
+.profile {
+  a {
+    color: var(--color-text);
+    font-weight: bold;
+    cursor: pointer;
+    &:hover {
+      color: #1fff94;
+    }
+  }
 }
 </style>

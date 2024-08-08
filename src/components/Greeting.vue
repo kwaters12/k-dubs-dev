@@ -1,7 +1,7 @@
 <template>
   <div class="greetings">
     <a href="/">
-      <h1 class="green">Kelly Waters</h1>
+      <h1 class="blue">Kelly Waters</h1>
     </a>
     <h2>Senior Fullstack Developer</h2>
     <p>I love to build software, and have a high standard of quality.</p>
@@ -12,6 +12,7 @@
 a {
   margin: 0;
   padding: 0;
+  color: var(--color-text);
 }
 a:hover,
 a:active {

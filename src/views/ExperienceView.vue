@@ -1,82 +1,139 @@
+<script lang="ts">
+export enum Experience {
+  Convertus = 'Convertus',
+  BroadbandTV = 'BroadbandTV',
+  StoryDriven = 'StoryDriven',
+  Xeraflop = 'Xeraflop',
+  iClinic = 'iClinic',
+  Penny = 'Penny'
+}
+</script>
 <script setup lang="ts">
 type ExperienceItem = {
+  id: Experience
   title: string
   company: string
   date: string
   description: string
+  link?: string
   techStack: string[]
 }
 const experienceItems: ExperienceItem[] = [
   {
-    title: 'Software Developer',
-    company: 'Direct-to-Consumer Sales Software',
+    id: Experience.Penny,
+    title: 'Staff Engineer',
+    company: 'Penny AI',
     date: '2020 - Present',
     description:
-      'I work on a team that builds software to help companies sell directly to consumers. I work on a variety of projects, including a new product that helps companies manage their inventory.',
-    techStack: ['Vue.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker', 'Kubernetes']
+      'Work on the entire stack for Penny’s client facing web, iOS and Android apps. Including setting up our repositories, implementing and maintaining our localization solution, creating and maintaining CircleCI jobs, as well as delivering countless features, all while mentoring my teammates and collaborating with other teams.',
+    link: 'https://trnd.io',
+    techStack: ['Angular', 'Capacitor', 'Typescript', 'PostgreSQL', 'Django', 'AWS']
   },
   {
-    title: 'Software Developer',
-    company: 'Medical Software Provider',
+    id: Experience.iClinic,
+    title: 'Software Engineer',
+    company: 'iClinic Systems Inc.',
     date: '2018 - 2020',
     description:
-      'I worked on a team that built software for medical professionals. I worked on a variety of projects, including a new product that helps doctors manage their patients.',
-    techStack: ['React', 'JavaScript', 'Node.js', 'MongoDB', 'Docker', 'Kubernetes']
+      'Implemented scalable frontend solutions using Angular 7/8 with NgRx and Nrwl, creating a modular codebase that reduced development time for new features. Led the adoption of Git and NgRx, improving code quality and team collaboration while mentoring junior developers to enhance technical proficiency. Collaborated with UX/UI designers and backend teams to deliver responsive interfaces and optimize API designs, accelerating feature development and improving user satisfaction.',
+    link: 'https://iclinicemr.com',
+    techStack: ['Angular', 'Nrwl/Nx', 'Typescript', 'Java', 'Spring', 'Azure']
   },
   {
-    title: 'Software Developer',
-    company: 'Legalized Marijuana Startup',
-    date: '2016 - 2018',
+    id: Experience.Xeraflop,
+    title: 'Software Engineer',
+    company: 'Xeraflop Technologies',
+    date: '2017 - 2018',
     description:
-      'I worked on a team that built software for the legalized marijuana industry. I worked on a variety of projects, including a new product that helps marijuana growers manage their crops.',
-    techStack: ['Angular', 'JavaScript', 'Node.js', 'MongoDB', 'Docker', 'Kubernetes']
+      'I worked on a team that built software for the legalized marijuana industry. I worked on a variety of projects, including a POS and online delivery software. We also did an ICO while I was there, which was... interesting and a great crash course into all things crypto.',
+    techStack: ['React', 'Ruby on Rails', 'Angular.JS', 'Docker', 'Jenkins']
   },
   {
-    title: 'Software Developer',
-    company: 'Marketing Agency',
-    date: '2014 - 2016',
+    id: Experience.StoryDriven,
+    title: 'Web Developer',
+    company: 'StoryDriven Inc.',
+    date: '2017',
     description:
-      'I worked on a team that built software for marketing agencies. I worked on a variety of projects, including a new product that helps marketing agencies manage their clients.',
-    techStack: ['Ember.js', 'JavaScript', 'Ruby on Rails', 'PostgreSQL', 'Docker', 'Kubernetes']
+      'Implementing Codeship for deployments, and creating documentation to guide future web development projects. Create responsive emails for clients and update client websites.',
+    techStack: ['Wordpress', 'Codeship', 'HTML', 'CSS', 'JavaScript']
   },
   {
-    title: 'Software Developer',
-    company: 'YouTube Creator Network Platform',
-    date: '2012 - 2014',
+    id: Experience.BroadbandTV,
+    title: 'Frontend Developer',
+    company: 'BroadbandTV Corp.',
+    date: '2016 - 2017',
     description:
-      'I worked on a team that built software for YouTube creators. I worked on a variety of projects, including a new product that helps YouTube creators manage their videos.',
-    techStack: ['Backbone.js', 'JavaScript', 'Ruby on Rails', 'PostgreSQL', 'Docker', 'Kubernetes']
+      'Developed the Catalyst for Chrome Extension to optimize YouTube videos for partners. Assisted in adopting modern development stacks using Docker, enhancing development efficiency and scalability.',
+    link: 'https://bbtv.com/',
+    techStack: ['React', 'Chrome Extensions', 'Docker', 'Jenkins', 'Python']
   },
   {
-    title: 'Software Developer',
-    company: 'Car Dealership Website Maker',
-    date: '2010 - 2012',
+    id: Experience.Convertus,
+    title: 'Web Development Specialist',
+    company: 'Convertus',
+    date: '2014 - 2015',
     description:
-      'I worked on a team that built software for car dealerships. I worked on a variety of projects, including a new product that helps car dealerships manage their inventory.',
-    techStack: ['jQuery', 'JavaScript', 'PHP', 'MySQL', 'Docker', 'Kubernetes']
+      'Assisted with UX/UI design for automotive websites and developed custom WordPress plugins, enhancing functionality and user experience. Implemented robust deployment and version control strategies, improving team efficiency and code quality.',
+    link: 'https://convertus.com/',
+    techStack: ['jQuery', 'JavaScript', 'PHP', 'MySQL', 'Docker', 'Wordpress']
   }
 ]
+
+function clickHandler(link: string) {
+  if (link) {
+    window.open(link, '_blank') // Open the link in a new tab
+  }
+}
 </script>
 <template>
-  <div class="experience">
-    <div v-for="items in experienceItems">
-      <h1>{{ items.title }}</h1>
-      <h2>{{ items.company }}</h2>
-      <h3>{{ items.date }}</h3>
-      <p>{{ items.description }}</p>
-      <ul>
-        <li v-for="tech in items.techStack" :key="tech">{{ tech }}</li>
-      </ul>
+  <main>
+    <div class="experience">
+      <div
+        v-for="item in experienceItems"
+        class="experience-item"
+        @click="clickHandler(item.link ?? '')"
+        :id="item.id"
+      >
+        <p>
+          <span class="date">{{ item.date }}</span>
+          <strong> {{ item.title }} - {{ item.company }}</strong>
+        </p>
+        <p>{{ item.description }}</p>
+        <ul>
+          <li v-for="tech in item.techStack" :key="tech">{{ tech }}</li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+.experience {
+  padding: 1rem 0 0 0;
+
+  strong {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 1rem;
   }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    li {
+      display: inline;
+      padding: 5px 1rem 8px 1rem;
+      margin-right: 1rem;
+      background-color: #1fff94;
+      color: var(--color-background);
+      border-radius: 15px;
+    }
+  }
+}
+.experience-item {
+  p:first-of-type {
+    margin-bottom: 0.5rem;
+  }
+  padding: 1rem 0 2rem 0;
 }
 </style>

@@ -10,6 +10,8 @@
 
   --vt-c-indigo: #2c3e50;
 
+  --vt-c-teal: #0e2c33;
+
   --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
   --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
   --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
@@ -17,7 +19,7 @@
 
   --vt-c-text-light-1: var(--vt-c-indigo);
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
+  --vt-c-text-dark-1: var(--vt-c-white-soft);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 }
 
@@ -38,7 +40,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--vt-c-black);
+    --color-background: var(--vt-c-teal);
     --color-background-soft: var(--vt-c-black-soft);
     --color-background-mute: var(--vt-c-black-mute);
 
@@ -46,7 +48,7 @@
     --color-border-hover: var(--vt-c-divider-dark-1);
 
     --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
+    --color-text: var(--vt-c-text-dark-1);
   }
 }
 
@@ -62,6 +64,10 @@ body {
   min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background);
+  background-image: url('./bg.svg');
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   transition:
     color 0.5s,
     background-color 0.5s;
