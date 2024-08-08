@@ -127,6 +127,7 @@ function clickHandler(link: string) {
       background-color: #1fff94;
       color: var(--color-background);
       border-radius: 15px;
+      font-weight: 500;
     }
   }
 }
