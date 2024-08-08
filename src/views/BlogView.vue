@@ -14,9 +14,9 @@ const components = computed(() => {
 
 <style>
 .markdown-body {
-  h1 {
+  h4 {
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
   }
   strong {
     font-weight: bold;
