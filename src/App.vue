@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { RouterLink, RouterView } from 'vue-router'
 import Greeting from './components/Greeting.vue'
 import HomeView from './views/HomeView.vue'
 import ExperienceView, { Experience } from './views/ExperienceView.vue'
@@ -10,7 +9,7 @@ const homeRef = ref<HTMLElement | null>(null)
 const experienceRef = ref<HTMLElement | null>(null)
 const projectsRef = ref<HTMLElement | null>(null)
 const blogRef = ref<HTMLElement | null>(null)
-function scrollTo(view: Ref<HTMLElement | null>) {
+function scrollTo(view: any) {
   view.scrollIntoView({ behavior: 'smooth' })
 }
 function scrollToExperience(experience: Experience) {
