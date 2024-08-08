@@ -9,6 +9,14 @@
 </template>
 
 <style scoped>
+a {
+  margin: 0;
+  padding: 0;
+}
+a:hover,
+a:active {
+  background-color: transparent;
+}
 h1 {
   font-weight: 500;
   font-size: 2.6rem;
