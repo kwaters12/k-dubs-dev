@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { defineEmits } from 'vue'
 import { Experience } from './ExperienceView.vue'
-const emit = defineEmits(['scrollToExperience'])
 </script>
 
 <template>
