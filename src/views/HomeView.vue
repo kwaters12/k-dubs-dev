@@ -32,7 +32,7 @@ import { Experience } from './ExperienceView.vue'
       <p>
         As a proud father, I try and take time away from the computer, enjoying this beautiful
         country I live in 🇨🇦. Activities include swimming, hiking, biking, picnicking, playing at
-        the playground, and even the odd video game session.
+        the playground, and even the odd video game session 🧝‍♂️🏹.
       </p>
     </div>
   </main>
