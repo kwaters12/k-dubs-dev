@@ -1,5 +1,5 @@
 <template>
-  <div class="greetings">
+  <div class="greeting">
     <a href="/">
       <h1 class="blue">Kelly Waters</h1>
     </a>
@@ -29,14 +29,12 @@ h3 {
   font-size: 1.2rem;
 }
 
-.greetings h1,
-.greetings h3 {
+.greeting {
   text-align: center;
 }
 
 @media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
+  .greeting {
     text-align: left;
   }
 }

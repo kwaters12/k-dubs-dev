@@ -94,6 +94,7 @@ function clickHandler(link: string) {
         class="experience-item"
         @click="clickHandler(item.link ?? '')"
         :id="item.id"
+        :class="{ hover: item.link }"
       >
         <p>
           <span class="date">{{ item.date }}</span>
@@ -126,17 +127,24 @@ function clickHandler(link: string) {
       padding: 3px 1rem;
       margin-right: 1rem;
       margin-top: 0.5rem;
-      background-color: #1fff94;
-      color: var(--color-background);
+      background-color: #123942;
+      /* color: #1fff94; */
       border-radius: 15px;
       font-weight: 500;
+      font-size: 12px;
     }
   }
 }
 .experience-item {
+  &:hover {
+    background-color: rgba(75, 125, 136, 0.5);
+  }
+  &.hover {
+    cursor: pointer;
+  }
   p:first-of-type {
     margin-bottom: 0.5rem;
   }
-  padding: 1rem 0 2rem 0;
+  padding: 1rem 1rem 2rem 1rem;
 }
 </style>

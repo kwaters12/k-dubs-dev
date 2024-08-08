@@ -5,3 +5,9 @@
     </div>
   </main>
 </template>
+
+<style scoped>
+.projects {
+  padding: 0 1rem;
+}
+</style>

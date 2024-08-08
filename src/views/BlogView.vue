@@ -10,11 +10,16 @@ const components = computed(() => {
 
 <template>
   <main>
-    <component v-for="component in components" :is="component" />
+    <div class="blog">
+      <component v-for="component in components" :is="component" />
+    </div>
   </main>
 </template>
 
 <style>
+.blog {
+  padding: 0 1rem;
+}
 .markdown-body {
   h4 {
     font-weight: bold;

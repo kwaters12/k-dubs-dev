@@ -1,3 +1,12 @@
+<script lang="ts">
+enum Screens {
+  Home = 'Home',
+  Experience = 'Experience',
+  Projects = 'Projects',
+  Blog = 'Blog'
+}
+</script>
+
 <script setup lang="ts">
 import { ref } from 'vue'
 import Greeting from './components/Greeting.vue'
@@ -5,6 +14,7 @@ import HomeView from './views/HomeView.vue'
 import ExperienceView, { Experience } from './views/ExperienceView.vue'
 import ProjectsView from './views/ProjectsView.vue'
 import BlogView from './views/BlogView.vue'
+const currentScreen = ref<Screens>(Screens.Home)
 const homeRef = ref<HTMLElement | null>(null)
 const experienceRef = ref<HTMLElement | null>(null)
 const projectsRef = ref<HTMLElement | null>(null)
@@ -16,6 +26,32 @@ function scrollToExperience(experience: Experience) {
   const elem = document.getElementById(experience)
   elem?.scrollIntoView({ behavior: 'smooth' })
 }
+function scrollNow() {
+  const currentScrollPos = window.scrollY
+  const homeTop = homeRef?.value?.offsetTop || 0
+  const projectsTop = projectsRef?.value?.offsetTop || 0
+  const blogTop = blogRef?.value?.offsetTop || 0
+
+  if (currentScrollPos <= homeTop) {
+    currentScreen.value = Screens.Home
+  } else if (currentScrollPos >= homeTop && currentScrollPos < projectsTop) {
+    currentScreen.value = Screens.Experience
+  } else if (currentScrollPos >= projectsTop && currentScrollPos < blogTop) {
+    currentScreen.value = Screens.Projects
+  } else {
+    currentScreen.value = Screens.Blog
+  }
+}
+function handleScroll() {
+  let doScoll: any
+
+  window.onscroll = () => {
+    clearTimeout(doScoll)
+    doScoll = setTimeout(scrollNow, 100) // firing less scroll events
+  }
+}
+
+handleScroll()
 </script>
 
 <template>
@@ -24,13 +60,21 @@ function scrollToExperience(experience: Experience) {
       <Greeting />
 
       <nav>
-        <a @click="scrollTo(homeRef)">Profile</a>
-        <a @click="scrollTo(experienceRef)">Experience</a>
-        <a @click="scrollTo(projectsRef)">Projects</a>
-        <a @click="scrollTo(blogRef)">Blog</a>
+        <a :class="{ active: currentScreen === Screens.Home }" @click="scrollTo(homeRef)"
+          >Profile</a
+        >
+        <a
+          :class="{ active: currentScreen === Screens.Experience }"
+          @click="scrollTo(experienceRef)"
+          >Experience</a
+        >
+        <a :class="{ active: currentScreen === Screens.Projects }" @click="scrollTo(projectsRef)"
+          >Projects</a
+        >
+        <a :class="{ active: currentScreen === Screens.Blog }" @click="scrollTo(blogRef)">Blog</a>
       </nav>
 
-      <p>
+      <p class="resume">
         Click here to download my latest
         <a href="/resume.pdf" target="_blank" rel="noopener noreferrer"> Resume </a>
       </p>
@@ -81,13 +125,9 @@ header {
 
 nav {
   width: 100%;
-  font-size: 12px;
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  a {
-    cursor: pointer;
-  }
 }
 
 nav a.router-link-exact-active {
@@ -96,13 +136,22 @@ nav a.router-link-exact-active {
 }
 
 nav a {
+  cursor: pointer;
   display: inline-block;
   padding: 0 1rem 3px 1rem;
   border-left: 1px solid var(--color-border);
+  &.active {
+    color: var(--color-text);
+    text-decoration: underline;
+  }
 }
 
 nav a:first-of-type {
   border: 0;
+}
+
+.resume {
+  text-align: center;
 }
 
 @media (min-width: 1024px) {

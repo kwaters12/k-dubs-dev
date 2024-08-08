@@ -47,6 +47,7 @@ li {
   font-weight: lighter;
 }
 .profile {
+  padding: 0 1rem;
   a {
     color: var(--color-text);
     font-weight: bold;
