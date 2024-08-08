@@ -2,7 +2,7 @@
   <div class="greetings">
     <h1 class="green">Kelly Waters</h1>
     <h2>Senior Fullstack Developer</h2>
-    <p>I love to build software, and have a high standard of quality</p>
+    <p>I love to build software, and have a high standard of quality.</p>
   </div>
 </template>
 

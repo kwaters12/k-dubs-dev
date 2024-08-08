@@ -1,10 +1,9 @@
-<script setup>
-import { defineComponent, defineAsyncComponent, computed } from 'vue'
+<script setup lang="ts">
+import { defineAsyncComponent, computed } from 'vue'
 const BlogPosts = import.meta.glob('../assets/posts/*.md')
 const components = computed(() => {
   return Object.keys(BlogPosts).map((path) => {
-    const name = path.replace('../assets/posts/', '').replace('.md', '')
-    return defineAsyncComponent(() => BlogPosts[path]().then((module) => module.default))
+    return defineAsyncComponent(() => BlogPosts[path]().then((module: any) => module.default))
   })
 })
 </script>
@@ -12,3 +11,15 @@ const components = computed(() => {
 <template>
   <component v-for="component in components" :is="component" />
 </template>
+
+<style>
+.markdown-body {
+  h1 {
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  strong {
+    font-weight: bold;
+  }
+}
+</style>
