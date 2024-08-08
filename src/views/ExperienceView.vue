@@ -55,6 +55,7 @@ const experienceItems: ExperienceItem[] = [
     date: '2017',
     description:
       'Implementing Codeship for deployments, and creating documentation to guide future web development projects. Create responsive emails for clients and update client websites.',
+    link: 'https://storydriven.com/',
     techStack: ['Wordpress', 'Codeship', 'HTML', 'CSS', 'JavaScript']
   },
   {
@@ -122,7 +123,7 @@ function clickHandler(link: string) {
     padding: 0;
     li {
       display: inline-block;
-      padding: 5px 1rem;
+      padding: 3px 1rem;
       margin-right: 1rem;
       margin-top: 0.5rem;
       background-color: #1fff94;
