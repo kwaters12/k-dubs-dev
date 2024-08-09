@@ -8,6 +8,6 @@
 
 <style scoped>
 .projects {
-  padding: 0 1rem;
+  padding: 1.5rem 1rem 0 0;
 }
 </style>

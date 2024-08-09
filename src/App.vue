@@ -42,16 +42,6 @@ function scrollNow() {
   } else {
     currentScreen.value = Screens.Home
   }
-
-  // if (currentScrollPos < experienceTop) {
-  //   currentScreen.value = Screens.Home
-  // } else if (currentScrollPos >= experienceTop && currentScrollPos <= projectsTop) {
-  //   currentScreen.value = Screens.Experience
-  // } else if (currentScrollPos >= projectsTop && currentScrollPos <= blogTop) {
-  //   currentScreen.value = Screens.Projects
-  // } else {
-  //   currentScreen.value = Screens.Blog
-  // }
 }
 function handleScroll() {
   let doScoll: any
@@ -113,12 +103,11 @@ handleScroll()
     <section ref="blogRef">
       <BlogView />
     </section>
-    <div class="divider"></div>
     <section ref="footerRef">
       <footer>
         <p>
-          Made in {{ new Date().getFullYear() }} with VueJS and Vite. Hosted on Vercel. Source code
-          available on <a href="https://github.com/kwaters12/k-dubs-dev">GitHub</a>.
+          Made in {{ new Date().getFullYear() }} with VueJS and Vite. Deployed with Vercel. Source
+          code available on <a href="https://github.com/kwaters12/k-dubs-dev">GitHub</a>.
         </p>
       </footer>
     </section>
@@ -130,9 +119,7 @@ template {
   display: flex;
   flex-direction: row;
 }
-section {
-  padding: 2rem 0;
-}
+
 header {
   line-height: 1.5;
   background-color: var(--color-background);
@@ -170,6 +157,15 @@ nav a:first-of-type {
   text-align: center;
 }
 
+.divider {
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+footer {
+  padding: 1rem 1rem 1rem 0;
+}
+
 @media (min-width: 1024px) {
   header {
     position: sticky;
@@ -198,11 +194,5 @@ nav a:first-of-type {
   .content {
     padding: 245px 0 2rem;
   }
-}
-
-.divider {
-  height: 1px;
-  background-color: var(--color-border);
-  margin: 2rem 0;
 }
 </style>
