@@ -3,7 +3,7 @@ import { defineAsyncComponent, computed } from 'vue'
 const BlogPosts = import.meta.glob('../assets/posts/*.md')
 const components = computed(() => {
   return Object.keys(BlogPosts)
-    .reverse()
+    .reverse() // Sort by date descending
     .map((path) => {
       return defineAsyncComponent(() => BlogPosts[path]().then((module: any) => module.default))
     })
